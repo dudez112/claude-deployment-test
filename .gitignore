@@ -1,7 +1,8 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# dependencies
+# dependencies (versions are pinned exactly in package.json)
 /node_modules
+package-lock.json
 /.pnp
 .pnp.*
 .yarn/*

@@ -33,7 +33,7 @@ npm run build     # production build
 npm start         # serve the production build
 ```
 
-Requires Node.js 20.9 or later.
+Requires Node.js 20.9 or later. Dependencies are pinned to exact versions in `package.json`, so a fresh `npm install` reproduces the tested build.
 
 ## Environment variables
 

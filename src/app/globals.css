@@ -1,0 +1,139 @@
+@import "tailwindcss";
+
+@theme {
+  --color-night: #0e1033;
+  --color-deep: #121543;
+  --color-panel: #171b4d;
+  --color-raised: #20256a;
+  --color-line: #2c3279;
+  --color-ink: #eceeff;
+  --color-mute: #a2a6dc;
+  --color-faint: #6d72b4;
+  --color-signal: #3ee0c5;
+  --color-plasma: #a084ff;
+  --color-amber: #ffc857;
+  --color-coral: #ff6b8b;
+
+  --font-sans: var(--font-sora), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-unbounded), var(--font-sora), ui-sans-serif, sans-serif;
+
+  --animate-pulse-ring: pulse-ring 2.4s ease-out infinite;
+  --animate-rise: rise 0.35s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+
+  @keyframes pulse-ring {
+    0% {
+      box-shadow: 0 0 0 0 color-mix(in oklab, var(--color-signal) 60%, transparent);
+    }
+    80%,
+    100% {
+      box-shadow: 0 0 0 8px transparent;
+    }
+  }
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  background-color: var(--color-night);
+  background-image:
+    radial-gradient(60rem 40rem at 85% -10%, color-mix(in oklab, var(--color-plasma) 18%, transparent), transparent 70%),
+    radial-gradient(50rem 30rem at -10% 110%, color-mix(in oklab, var(--color-signal) 10%, transparent), transparent 70%);
+  background-attachment: fixed;
+  color: var(--color-ink);
+  font-feature-settings: "tnum" 1;
+}
+
+::selection {
+  background: color-mix(in oklab, var(--color-plasma) 45%, transparent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-signal);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Range inputs styled to match the instrument panel. */
+input[type="range"] {
+  appearance: none;
+  background: transparent;
+  height: 1.25rem;
+  cursor: pointer;
+}
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(
+    to right,
+    var(--color-plasma) var(--fill, 50%),
+    var(--color-line) var(--fill, 50%)
+  );
+}
+input[type="range"]::-moz-range-track {
+  height: 4px;
+  border-radius: 999px;
+  background: var(--color-line);
+}
+input[type="range"]::-moz-range-progress {
+  height: 4px;
+  border-radius: 999px;
+  background: var(--color-plasma);
+}
+input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  margin-top: -6px;
+  border-radius: 50%;
+  background: var(--color-ink);
+  border: 3px solid var(--color-plasma);
+}
+input[type="range"]::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--color-ink);
+  border: 3px solid var(--color-plasma);
+}
+input[type="range"]:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.scrollbar-none {
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
